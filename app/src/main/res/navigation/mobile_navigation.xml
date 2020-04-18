@@ -3,22 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/nav_article"
+    tools:ignore="UnusedNavigation">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/nav_article"
         android:name="com.imceits.android.dbsbeeceptortask.ui.ArticleFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_article" />
+        tools:layout="@layout/fragment_article" >
+        <action
+            android:id="@+id/action_nav_article_to_nav_detail"
+            app:destination="@id/nav_detail" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/nav_detail"
         android:name="com.imceits.android.dbsbeeceptortask.ui.DetailFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_nav_detail_to_nav_update"
+            app:destination="@id/nav_update" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/nav_update"
         android:name="com.imceits.android.dbsbeeceptortask.ui.ArticleUpdateFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_update" />
