@@ -1,14 +1,25 @@
 package com.imceits.android.dbsbeeceptortask.data
 
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 import java.text.SimpleDateFormat
 import java.util.*
 
 data class Article(
-
+    @SerializedName("id")
+    @Expose
     var id: Int,
+    @SerializedName("title")
+    @Expose
     var title: String,
+    @SerializedName("last_update")
+    @Expose
     var last_update: Long,
+    @SerializedName("short_description")
+    @Expose
     var description: String,
+    @SerializedName("avatar")
+    @Expose
     var img_url: String
 ) {
 

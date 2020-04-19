@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">DBSBeeceptorTask</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_article">Article</string>
+    <string name="title_detail">Details</string>
+    <string name="title_edit">Edit Article</string>
+
+    <string name="repo_language">Others</string>
+    <string name="error_message">Something went wrong!</string>
+    <string name="network_check">Check your internet and try again.</string>
+    <string name="button_retry">Retry</string>
 </resources>
