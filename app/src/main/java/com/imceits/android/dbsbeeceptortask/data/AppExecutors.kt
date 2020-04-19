@@ -8,7 +8,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-open class AppExecutors (private val diskIO: Executor, private val network: Executor,
+open class AppExecutors (private val diskIO: Executor, private val networkIO: Executor,
  private val mainThread: Executor) {
 
     @Inject
@@ -21,7 +21,7 @@ open class AppExecutors (private val diskIO: Executor, private val network: Exec
     }
 
     fun networkIO(): Executor {
-        return networkIO()
+        return networkIO
     }
     fun mainThread(): Executor {
         return mainThread
