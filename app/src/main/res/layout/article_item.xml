@@ -12,7 +12,7 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_article"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -36,10 +36,10 @@
                 android:layout_height="@dimen/icon_list_height"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                app:image_url="@{data.img_url}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:image_url="@{data.img_url}"
-                app:srcCompat="@drawable/ic_account_circle" />
+                android:src="@drawable/ic_account_circle" />
 
             <TextView
                 android:id="@+id/txt_date"
