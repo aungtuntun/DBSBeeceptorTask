@@ -8,4 +8,6 @@
     <dimen name="network_width">150dp</dimen>
     <dimen name="network_height">150dp</dimen>
     <dimen name="normal_margin">8dp</dimen>
+    <dimen name="profile_icon_width">100dp</dimen>
+    <dimen name="profile_icon_height">100dp</dimen>
 </resources>
