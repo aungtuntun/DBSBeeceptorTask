@@ -1,10 +1,12 @@
 package com.imceits.android.dbsbeeceptortask.data
 
+import androidx.room.Entity
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.text.SimpleDateFormat
 import java.util.*
 
+@Entity(tableName = "Article")
 data class Article(
     @SerializedName("id")
     @Expose
