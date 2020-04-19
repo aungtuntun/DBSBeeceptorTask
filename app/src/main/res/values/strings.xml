@@ -8,4 +8,5 @@
     <string name="error_message">Something went wrong!</string>
     <string name="network_check">Check your internet and try again.</string>
     <string name="button_retry">Retry</string>
+    <string name="edit_content">Edit content</string>
 </resources>
