@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DBSBeeceptorTask</string>
+    <string name="app_name">Beeceptor</string>
     <string name="title_article">Article</string>
     <string name="title_detail">Details</string>
     <string name="title_edit">Edit Article</string>
