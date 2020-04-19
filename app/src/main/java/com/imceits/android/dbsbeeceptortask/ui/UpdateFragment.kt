@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.imceits.android.dbsbeeceptortask.R
 
-class ArticleUpdateFragment : Fragment() {
+class UpdateFragment : Fragment() {
 
     private lateinit var updateViewModel: UpdateViewModel
 
@@ -22,7 +22,7 @@ class ArticleUpdateFragment : Fragment() {
         updateViewModel =
                 ViewModelProviders.of(this).get(UpdateViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_update, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
+        val textView: TextView = root.findViewById(R.id.txt_date)
         updateViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
