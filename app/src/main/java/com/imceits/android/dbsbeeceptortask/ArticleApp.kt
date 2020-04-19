@@ -1,4 +1,10 @@
 package com.imceits.android.dbsbeeceptortask
 
-class ArticleApp {
+import android.app.Application
+
+class ArticleApp: Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+    }
 }
