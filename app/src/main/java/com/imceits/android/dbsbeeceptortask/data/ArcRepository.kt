@@ -3,6 +3,7 @@ package com.imceits.android.dbsbeeceptortask.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -34,6 +35,8 @@ class ArcRepository @Inject constructor(private val apiService: APIService, priv
     fun saveArticle(item: Article): LiveData<Long> {
         val result = MutableLiveData<Long>()
         appExecutors.diskIO().execute {
+            val time = Calendar.getInstance().timeInMillis
+            item.last_update = time
             val id = arcDao.save(item)
             result.postValue(id)
         }
