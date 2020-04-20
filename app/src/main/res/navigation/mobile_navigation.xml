@@ -39,5 +39,8 @@
             android:name="arc_id"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_nav_update_to_nav_detail"
+            app:destination="@id/nav_detail" />
     </fragment>
 </navigation>

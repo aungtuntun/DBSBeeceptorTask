@@ -9,4 +9,6 @@
     <string name="network_check">Check your internet and try again.</string>
     <string name="button_retry">Retry</string>
     <string name="edit_content">Edit content</string>
+    <string name="btn_save">Save</string>
+    <string name="button_cancel">Cancel</string>
 </resources>
