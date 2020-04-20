@@ -4,6 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
+        <import type="com.imceits.android.dbsbeeceptortask.data.Status" />
+        <variable
+            name="viewModel"
+            type="com.imceits.android.dbsbeeceptortask.ui.ArticleViewModel" />
+        <variable
+            name="resource"
+            type="com.imceits.android.dbsbeeceptortask.data.Resource" />
 
     </data>
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -12,7 +11,9 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_article"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -36,10 +37,10 @@
                 android:layout_height="@dimen/icon_list_height"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_account_circle"
                 app:image_url="@{data.img_url}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/ic_account_circle" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txt_date"
