@@ -3,11 +3,12 @@ package com.imceits.android.dbsbeeceptortask.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
+import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ArcRepository constructor(private val apiService: APIService, private val arcDao: ArcDao,
-private val appExecutors: AppExecutors) {
+class ArcRepository @Inject constructor(private val apiService: APIService, private val arcDao: ArcDao,
+                                            private val appExecutors: AppExecutors) {
 
     fun loadArticles(): LiveData<Resource<List<Article>>> {
         return object : NetworkBoundResource<List<Article>, List<Article>> (appExecutors) {
