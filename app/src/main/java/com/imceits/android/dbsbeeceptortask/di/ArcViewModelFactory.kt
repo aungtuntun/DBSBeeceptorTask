@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 @Singleton
 class ArcViewModelFactory @Inject constructor(private val creators: Map<Class<out ViewModel>,
-                                      Provider<ViewModel>>): ViewModelProvider.Factory {
+                                      @JvmSuppressWildcards Provider<ViewModel>>): ViewModelProvider.Factory {
 
  override fun <T : ViewModel?> create(modelClass: Class<T>): T {
   val creator = creators[modelClass]?: creators.entries.firstOrNull{
