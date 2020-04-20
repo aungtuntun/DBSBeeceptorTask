@@ -24,11 +24,20 @@
         <action
             android:id="@+id/action_nav_detail_to_nav_update"
             app:destination="@id/nav_update" />
+        <argument
+            android:name="article_id"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_update"
-        android:name="com.imceits.android.dbsbeeceptortask.ui.ArticleUpdateFragment"
+        android:name="com.imceits.android.dbsbeeceptortask.ui.UpdateFragment"
         android:label="@string/title_edit"
-        tools:layout="@layout/fragment_update" />
+        tools:layout="@layout/fragment_update" >
+        <argument
+            android:name="arc_id"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>
