@@ -7,13 +7,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.imceits.android.dbsbeeceptortask.R
+import com.imceits.android.dbsbeeceptortask.di.Injectable
+import javax.inject.Inject
 
-class DetailFragment : Fragment() {
+class DetailFragment : Fragment(), Injectable {
 
     private lateinit var detailViewModel: DetailViewModel
-
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
