@@ -18,4 +18,7 @@ interface ArcDao {
     @Query("SELECT * FROM Article order by last_update DESC")
     fun getArticle(): LiveData<List<Article>>
 
+    @Query("SELECT * FROM Article WHERE id = :id")
+    fun get(id: Int): LiveData<Article>
+
 }
