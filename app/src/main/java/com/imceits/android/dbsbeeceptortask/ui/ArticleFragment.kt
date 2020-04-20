@@ -18,7 +18,7 @@ class ArticleFragment : Fragment(), Injectable {
     private lateinit var articleViewModel: ArticleViewModel
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    var binding by AutoClearedValue<FragmentArticleBinding>(this)
+    private var binding by AutoClearedValue<FragmentArticleBinding>(this)
     lateinit var adapter: ArticleAdapter
     override fun onCreateView(
             inflater: LayoutInflater,
