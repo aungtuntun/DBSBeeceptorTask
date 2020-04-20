@@ -15,16 +15,16 @@ data class Article(
     var id: Int,
     @SerializedName("title")
     @Expose
-    var title: String,
+    var title: String?,
     @SerializedName("last_update")
     @Expose
     var last_update: Long,
     @SerializedName("short_description")
     @Expose
-    var description: String,
+    var description: String?,
     @SerializedName("avatar")
     @Expose
-    var img_url: String
+    var img_url: String?
 ) {
 
     fun getLastUpdate(): String {
