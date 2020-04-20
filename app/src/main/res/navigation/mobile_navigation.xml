@@ -41,6 +41,9 @@
             android:defaultValue="0" />
         <action
             android:id="@+id/action_nav_update_to_nav_detail"
-            app:destination="@id/nav_detail" />
+            app:destination="@id/nav_detail"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_update"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
