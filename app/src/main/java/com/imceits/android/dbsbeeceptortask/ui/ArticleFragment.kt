@@ -32,6 +32,9 @@ class ArticleFragment : Fragment(), Injectable {
         binding.articleList.itemAnimator = DefaultItemAnimator()
         adapter = ArticleAdapter()
         binding.articleList.adapter = adapter
+        binding.include.btnRefresh.setOnClickListener{
+            fetchArticle()
+        }
         return binding.root
     }
 
@@ -39,6 +42,10 @@ class ArticleFragment : Fragment(), Injectable {
         super.onActivityCreated(savedInstanceState)
         articleViewModel = ViewModelProvider(this, viewModelFactory).get(ArticleViewModel::class.java)
         binding.viewModel = articleViewModel
+        fetchArticle()
+    }
+
+    fun fetchArticle() {
         articleViewModel.fetchArticles().observe(viewLifecycleOwner, Observer {
             binding.resource = it
             it.data?.let { data ->
