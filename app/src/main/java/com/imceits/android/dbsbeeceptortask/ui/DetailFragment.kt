@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
@@ -38,7 +39,9 @@ class DetailFragment : Fragment(), Injectable {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         detailViewModel = ViewModelProvider(this, viewModelFactory).get(DetailViewModel::class.java)
-        binding.viewModel = detailViewModel
         detailViewModel.updateParam(articleId)
+        detailViewModel.article.observe(viewLifecycleOwner, Observer {
+            binding.data = it
+        })
     }
 }

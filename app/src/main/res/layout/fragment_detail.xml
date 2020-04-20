@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="viewModel"
-            type="com.imceits.android.dbsbeeceptortask.ui.DetailViewModel" />
+            name="data"
+            type="com.imceits.android.dbsbeeceptortask.data.Article" />
     </data>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:src="@drawable/ic_account_circle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:image_url="@{viewModel.article.img_url}"/>
+            app:image_url="@{data.img_url}"/>
 
         <TextView
             android:id="@+id/txt_title"
@@ -37,7 +37,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@{viewModel.article.title}"
+            android:text="@{data.title}"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Title" />
@@ -48,7 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@{viewModel.article.lastUpdate}"
+            android:text="@{data.lastUpdate}"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/img_avatar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_title"
@@ -59,9 +62,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:text="@{data.description}"
             android:textAlignment="center"
             android:textColorLink="#00796B"
             android:textSize="20sp"
