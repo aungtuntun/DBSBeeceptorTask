@@ -9,7 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 abstract class NetworkBoundResource<ResultType, RequestType>
-  constructor(private val appExecutors: AppExecutors){
+ @MainThread constructor(private val appExecutors: AppExecutors){
 
      private val result = MediatorLiveData<Resource<ResultType>>()
     init {
