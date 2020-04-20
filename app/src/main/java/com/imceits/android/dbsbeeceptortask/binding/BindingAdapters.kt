@@ -8,8 +8,8 @@ object BindingAdapters {
 
     @JvmStatic
     @BindingAdapter("image_url")
-    fun setImgUrl(imageView: ImageView, url: String) {
-        url.let {
+    fun setImgUrl(imageView: ImageView, url: String?) {
+        url?.let {
             Glide.with(imageView.context).load(it).into(imageView)
         }
     }
