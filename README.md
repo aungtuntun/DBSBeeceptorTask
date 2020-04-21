@@ -48,5 +48,5 @@ Sample of code test for Beeceptor using Kotlin, Dagger 2, Retrofit, Okhttp, JUni
  </table>
  
  <p>
- 6. Android Architecture
+ 6. Android Architecture (source - https://developer.android.com/jetpack/docs/guide)
 <img align="left" src="screens/final-architecture.png" /></a>
