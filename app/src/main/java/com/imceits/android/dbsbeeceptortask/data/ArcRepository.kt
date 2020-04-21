@@ -1,5 +1,6 @@
 package com.imceits.android.dbsbeeceptortask.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
@@ -8,17 +9,20 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ArcRepository @Inject constructor(private val apiService: APIService, private val arcDao: ArcDao,
-                                            private val appExecutors: AppExecutors) {
+open class ArcRepository @Inject constructor(private val apiService: APIService, private val arcDao: ArcDao,
+                                             private val appExecutors: AppExecutors) {
 
-    fun loadArticles(): LiveData<Resource<List<Article>>> {
+   open fun loadArticles(): LiveData<Resource<List<Article>>> {
         return object : NetworkBoundResource<List<Article>, List<Article>> (appExecutors) {
             override fun saveCallResult(item: List<Article>) {
+                Log.d("TAG", item.toString())
                 arcDao.insert(item)
             }
 
             override fun shouldFetch(data: List<Article>?): Boolean {
-                return data.isNullOrEmpty()
+                val shouldFetch = data == null || data.isEmpty()
+                Log.d("TAG", "Should fetch $shouldFetch")
+                return shouldFetch
             }
 
             override fun loadFromDb(): LiveData<List<Article>> {
@@ -26,13 +30,14 @@ class ArcRepository @Inject constructor(private val apiService: APIService, priv
             }
 
             override fun createCall(): Call<List<Article>> {
+                Log.d("TAG", "Create call network")
                 return apiService.getArticles()
             }
 
         }.asLiveData()
     }
 
-    fun saveArticle(item: Article): LiveData<Long> {
+    open fun saveArticle(item: Article): LiveData<Long> {
         val result = MutableLiveData<Long>()
         appExecutors.diskIO().execute {
             val time = Calendar.getInstance().timeInMillis
@@ -43,7 +48,7 @@ class ArcRepository @Inject constructor(private val apiService: APIService, priv
         return result
     }
 
-    fun getArticle(id: Int): LiveData<Article> {
+    open fun getArticle(id: Int): LiveData<Article> {
         return arcDao.get(id)
     }
 }
