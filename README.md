@@ -42,7 +42,7 @@ Sample of code test for Beeceptor using Kotlin, Dagger 2, Retrofit, Okhttp, JUni
  <im
 </div>
 6. Android Architecture
-<img align="left" src="screens/final-architecture.png" width =250 height=500 /></a>
+<img align="left" src="screens/final-architecture.png" width =250 height=400 /></a>
  </td>
  </tr>
  </table>
