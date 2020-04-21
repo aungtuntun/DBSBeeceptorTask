@@ -15,7 +15,6 @@ open class ArcRepository @Inject constructor(private val apiService: APIService,
    open fun loadArticles(): LiveData<Resource<List<Article>>> {
         return object : NetworkBoundResource<List<Article>, List<Article>> (appExecutors) {
             override fun saveCallResult(item: List<Article>) {
-                Log.d("TAG", item.toString())
                 arcDao.insert(item)
             }
 

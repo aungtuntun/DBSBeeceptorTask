@@ -18,4 +18,9 @@ data class Resource<out T> (
             return Resource(Status.ERROR, data, message)
         }
     }
+
+    override fun toString(): String {
+        return "Resource(status=$status, data=$data, message=$message)"
+    }
+
 }
