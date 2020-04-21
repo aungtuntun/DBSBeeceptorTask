@@ -1,12 +1,12 @@
 package com.imceits.android.dbsbeeceptortask.data
 
+import android.util.Log
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import java.io.IOException
 
 abstract class NetworkBoundResource<ResultType, RequestType>
  @MainThread constructor(private val appExecutors: AppExecutors){
@@ -29,31 +29,40 @@ abstract class NetworkBoundResource<ResultType, RequestType>
     }
 
     private fun fetchFromNetwork(dbSource: LiveData<ResultType>) {
-        val apiResponse = createCall()
+
         result.addSource(dbSource) {newData ->
             setValue(Resource.loading(newData))
         }
-        apiResponse.enqueue(object : Callback<RequestType> {
-            override fun onFailure(call: Call<RequestType>, t: Throwable) {
-                onFetchFailed()
-                result.removeSource(dbSource)
-                result.addSource(dbSource) {newData ->
-                    setValue(Resource.error(t.message!!, newData))
-                }
-            }
-
-            override fun onResponse(call: Call<RequestType>, response: Response<RequestType>) {
-                appExecutors.diskIO().execute {
-                    saveCallResult(processResponse(response.body()!!))
-                    appExecutors.mainThread().execute {
-                        result.addSource(loadFromDb()) {
-                            setValue(Resource.success(it))
-                        }
-                    }
-                }
-            }
-
-        })
+        appExecutors.networkIO().execute {
+            val apiResponse = createCall().execute()
+       try {
+           when(apiResponse.isSuccessful) {
+               true -> appExecutors.diskIO().execute {
+                   saveCallResult(apiResponse.body()!!)
+                   appExecutors.mainThread().execute {
+                       result.removeSource(loadFromDb())
+                       result.addSource(loadFromDb()) {
+                           setValue(Resource.success(it))
+                       }
+                   }
+               }
+                   false -> appExecutors.mainThread().execute {
+                       onFetchFailed()
+                       result.removeSource(dbSource)
+                       result.addSource(dbSource) {newData ->
+                           setValue(Resource.error(apiResponse.message(), newData))
+                       }
+                   }
+           }
+       }catch (exc: IOException) {
+           Log.e("NETWORK", exc.message!!)
+           onFetchFailed()
+           result.removeSource(dbSource)
+           result.addSource(dbSource) {newData ->
+               setValue(Resource.error(exc.message!!, newData))
+           }
+       }
+        }
     }
 
     @MainThread
